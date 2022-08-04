@@ -20,3 +20,14 @@ Um livro possui as seguintes informações:
 O projeto de arquitetura C4 da solução foi desenhado com o draw.io
 
 O arquivo que contém o desenho pode ser baixado neste [link](./arquitetura.drawio).
+
+## Execução local
+Criar um arquivo .env na raiz do projeto e em seguida configurar os seguintes parâmetros:
+```
+PORT=Numero da porta a ser usada pela API
+```
+
+```sh
+npm install
+npm run start:dev
+```
