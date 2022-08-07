@@ -9,6 +9,8 @@
     "rootDir": "src",
     "strict": true,         
     "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "resolveJsonModule": true
   }
 }

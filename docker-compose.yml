@@ -1,0 +1,11 @@
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres:13.7-alpine3.16
+    restart: always
+    environment:
+      POSTGRES_USER: fake_db_username
+      POSTGRES_PASSWORD: fake_db_password
+      POSTGRES_DB: application_db
+    ports:
+      - "5432:5432"
