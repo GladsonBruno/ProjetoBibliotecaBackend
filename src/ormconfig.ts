@@ -1,8 +1,8 @@
 import * as dotenv from "dotenv";
-import { DataSourceOptions } from "typeorm"
+import { DataSource, DataSourceOptions } from "typeorm"
 dotenv.config();
 
-export const OrmConfig = {
+export const OrmConfigDataSource = new DataSource({
    "type": process.env.DB_TYPE,
    "host": process.env.DB_HOST,
    "port": process.env.DB_PORT,
@@ -12,19 +12,19 @@ export const OrmConfig = {
    "synchronize": process.env.SYNCHRONIZE == 'true' ? true : false,
    "logging": process.env.LOGGING == 'true' ? true : false,
    "entities": [
-      "src/entity/**/*.ts"
+      "./entity/**/*.ts"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "./migration/**/*.ts"
    ],
    "subscribers": [
-      "src/subscriber/**/*.ts"
+      "./subscriber/**/*.ts"
    ],
-   "seeds": ["src/seeds/**/*{.ts,.js}"],
-   "factories": ["src/factories/**/*{.ts,.js}"],
+   "seeds": ["./seeds/**/*{.ts,.js}"],
+   "factories": ["./factories/**/*{.ts,.js}"],
    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+      "entitiesDir": "./entity",
+      "migrationsDir": "./migration",
+      "subscribersDir": "./subscriber"
    }
-} as DataSourceOptions;
+} as DataSourceOptions);

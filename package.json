@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "API de CRUD de Livros",
   "scripts": {
-    "build": "rimraf ./build && tsc",
+    "build": "rimraf ./dist && tsc",
+    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create",
+    "migration:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -d ./src/ormconfig.ts",
+    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
     "start": "npm run build && node build/index.js",
     "start:dev": "nodemon",
-    "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
-    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ormconfig.json"
+    "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop -d ./src/ormconfig.ts",
+    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync -d ./src/ormconfig.ts",
+    "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f src/ormconfig.ts",
+    "fodase": "typeorm migration:create"
   },
   "repository": {
     "type": "git",

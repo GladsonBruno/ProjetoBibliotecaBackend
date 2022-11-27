@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 import { DataSource } from "typeorm"
 import * as cors from 'cors';
 import * as bodyParser from "body-parser";
-import { OrmConfig } from './ormconfig';
+import { OrmConfigDataSource } from './ormconfig';
 
 dotenv.config();
 
@@ -28,7 +28,7 @@ app.use(cors(options));
 app.use(bodyParser.json());
 var port = process.env.PORT;
 
-const AppDataSource = new DataSource(OrmConfig);
+const AppDataSource = OrmConfigDataSource;
 
 AppDataSource.initialize().then(() => {
     
